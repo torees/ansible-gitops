@@ -1,5 +1,4 @@
 
-
 stages:
     - dev
     - test
@@ -18,7 +17,7 @@ deploy_dev:
     variables:
         inventory: inventory
         hosts: dev 
-    stage: Dev
+    stage: dev
     environment:
         name: Dev
         
@@ -27,6 +26,6 @@ deploy_test:
     variables:
         inventory: inventory
         hosts: test 
-    stage: Test
+    stage: test
     environment:
         name: Test
