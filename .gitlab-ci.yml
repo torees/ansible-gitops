@@ -9,7 +9,7 @@ image: ansible/centos7-ansible
 .run_playbook:
     allow_failure: false
     script:
-        - nslookup vg.no
+        #- nslookup vg.no
         - ansible localhost -m ping -i $inventory -e "hosts=$hosts"
 
 deploy_dev:
