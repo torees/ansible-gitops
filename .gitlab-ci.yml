@@ -1,4 +1,3 @@
-
 stages:
     - dev
     - test
@@ -10,7 +9,8 @@ image: ansible/centos7-ansible
 .run_playbook:
     allow_failure: false
     script:
-        - ansible localhost -m ping
+        - nslookup vg.no
+        - ansible localhost -m ping -i $inventory -e "hosts=$hosts"
 
 deploy_dev:
     extends: .run_playbook
