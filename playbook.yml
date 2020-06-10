@@ -5,6 +5,6 @@
    hosts: "{{app_servers}}"
    become: yes
    tasks:
-     - yum:
-         name: nmap
-         state: present
+     - file:
+         path: /tmp/hello
+         state: touch
