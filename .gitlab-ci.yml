@@ -15,7 +15,7 @@ variables:
     script:
         - ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa 2>/dev/null <<< y >/dev/null
         - echo "-----BEGIN RSA PRIVATE KEY-----" > ~/.ssh/id_rsa
-        - echo $SSH_KEY >> ~/.ssh/id_rsa
+        - echo $SSH_KEY | tr ' ' '\n' | tail -n+5 | head -n-4 >> ~/.ssh/id_rsa
         - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
         - cat ~/.ssh/id_rsa
         - rm ~/.ssh/id_rsa.pub
