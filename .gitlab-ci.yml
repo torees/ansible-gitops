@@ -11,8 +11,8 @@ image: ansible/centos7-ansible
     tags:
         - aws
     script:
-        #- nslookup vg.no
-        - ansible-playbook playbook.yml -u ec2-user --private-key=/home/ec2-user/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
+        - ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa 2>/dev/null <<< y >/dev/null
+        - ansible-playbook playbook.yml -u ec2-user --private-key=~/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
 
 deploy_dev:
     extends: .run_playbook
