@@ -19,7 +19,7 @@ variables:
         - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
         - cat ~/.ssh/id_rsa
         - rm ~/.ssh/id_rsa.pub
-        - ls ~/.ssh/
+        - ll ~/.ssh/
         - ssh automation@ip-172-31-0-203.eu-west-1.compute.internal -i ~/.ssh/id_rsa cat /etc/hosts
         - ansible-playbook playbook.yml -u automation --private-key=~/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
 
