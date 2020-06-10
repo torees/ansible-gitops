@@ -14,6 +14,10 @@ variables:
         - aws
     script:
         - ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa 2>/dev/null <<< y >/dev/null
+        - echo "-----BEGIN RSA PRIVATE KEY-----" > ~/.ssh/id_rsa
+        - echo $SSH_KEY >> ~/.ssh/id_rsa
+        - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
+        - cat ~/.ssh/id_rsa
         - ansible-playbook playbook.yml -u ec2-user --private-key=~/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
 
 deploy_dev:
