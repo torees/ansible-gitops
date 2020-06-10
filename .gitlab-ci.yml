@@ -18,7 +18,7 @@ variables:
         - echo $SSH_KEY >> ~/.ssh/id_rsa
         - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
         - cat ~/.ssh/id_rsa
-        - ansible-playbook playbook.yml -u ec2-user --private-key=~/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
+        - ansible-playbook playbook.yml -u automation --private-key=~/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
 
 deploy_dev:
     extends: .run_playbook
