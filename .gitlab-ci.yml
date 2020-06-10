@@ -12,7 +12,7 @@ image: ansible/centos7-ansible
         - aws
     script:
         #- nslookup vg.no
-        - ansible localhost -m ping -i $inventory -e "hosts=$hosts"
+        - ansible-playbook playbook.yml -m ping -i $inventory -e "hosts=$hosts"
 
 deploy_dev:
     extends: .run_playbook
