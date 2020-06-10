@@ -2,7 +2,7 @@
 
 
 -  name: Run deploy
-   hosts: "{{deploy_hosts}}"
+   hosts: "{{app_servers}}"
    become: yes
    tasks:
      - ping:
