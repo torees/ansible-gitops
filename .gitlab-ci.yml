@@ -5,6 +5,8 @@ stages:
 
 image: ansible/centos7-ansible
 
+variables:
+    ANSIBLE_HOST_KEY_CHECKING: 'false'
 
 .run_playbook:
     allow_failure: false
