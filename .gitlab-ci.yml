@@ -3,7 +3,7 @@ stages:
     - test
 
 
-image: ansible/centos7-ansible
+image: haxorof/ansible:v2.9-centos7
 
 variables:
     ANSIBLE_HOST_KEY_CHECKING: 'false'
