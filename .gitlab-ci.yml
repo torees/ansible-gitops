@@ -28,8 +28,7 @@ deploy_dev:
         inventory: inventory/hosts.yml
         hosts: dev 
     stage: dev
-    environment:
-        name: Dev
+
         
 deploy_test:
     extends: .run_playbook
@@ -37,5 +36,3 @@ deploy_test:
         inventory: inventory
         hosts: test 
     stage: test
-    environment:
-        name: Test
