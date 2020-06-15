@@ -2,8 +2,7 @@
 
 
 -  name: Run deploy
-   hosts: test
-    #"{{app_servers}}"
+   hosts: "{{app_servers}}"
    become: yes
    tasks:
       - file:
