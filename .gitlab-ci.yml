@@ -18,7 +18,7 @@ variables:
         #- echo $SSH_KEY | tr ' ' '\n' | tail -n+5 | head -n-4 >> ~/.ssh/id_rsa
         - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
         - eval $(ssh-agent -s)
-        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+        - echo $SSH_PRIVATE_KEY | tr -d '\r' > ~/.ssh/id_rsa
         - cat ~/.ssh/id_rsa 
         - ssh -o "StrictHostKeyChecking=no" automation@ip-172-31-0-203.eu-west-1.compute.internal -i ~/.ssh/id_rsa cat /etc/hosts
         - ansible-playbook playbook.yml -u automation --private-key=~/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
