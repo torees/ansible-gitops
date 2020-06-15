@@ -5,6 +5,7 @@
    hosts: "{{app_servers}}"
    become: yes
    tasks:
-     - file:
-         path: /tmp/hello
-         state: touch
+      - file:
+          path: /tmp/hello
+          state: touch
+      - command: " cat /etc/hosts"
