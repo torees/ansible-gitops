@@ -25,7 +25,7 @@ variables:
 deploy_dev:
     extends: .run_playbook
     variables:
-        inventory: inventory
+        inventory: inventory/hosts.yml
         hosts: all 
     stage: dev
     environment:
