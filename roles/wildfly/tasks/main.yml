@@ -34,7 +34,7 @@
 
 - name: move version directory
   synchronize:
-    src: "/opt/wildfly-{{ wildfly_version }}"
+    src: "/opt/wildfly-{{ wildfly_version }}/"
     dest: "/usr/share/jboss-as"
     owner: yes
     group: yes
