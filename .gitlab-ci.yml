@@ -36,3 +36,4 @@ deploy_test:
         inventory: inventory
         hosts: test 
     stage: test
+    when: manual
