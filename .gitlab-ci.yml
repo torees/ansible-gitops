@@ -14,7 +14,6 @@ variables:
     tags:
         - aws
     script:
-        - sudo -i
         - ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa 2>/dev/null <<< y >/dev/null
         - rm -f ~/.ssh/id_rsa.pub
         - echo "-----BEGIN RSA PRIVATE KEY-----" > ~/.ssh/id_rsa
