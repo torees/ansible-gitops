@@ -34,7 +34,7 @@
 
 - name: move version directory
   copy:
-    src: "/opt/wildfly-{{ wildfly_version }}"
+    src: "/opt/wildfly-{{ wildfly_version }}/*"
     dest: "/usr/share/jboss-as"
     owner: jboss
     group: jboss
