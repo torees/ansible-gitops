@@ -27,7 +27,7 @@
 - name: Extract archive
   unarchive:
     src: "/opt/wildfly-{{ wildfly_version }}.zip"
-    dest: "/opt/wildfly-{{ wildfly_version }}"
+    dest: "/opt/"
     owner: jboss
     group: jboss
     remote_src: yes
