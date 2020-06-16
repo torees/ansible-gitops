@@ -1,2 +1,7 @@
 ---
 # handlers file for roles/wildfly
+
+- name: restart jboss 
+  service: 
+    name: jboss 
+    state: restarted
