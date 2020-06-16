@@ -4,10 +4,10 @@
 # with modifications to the tasks, and wildfly version as inventory variable
 
 - name: Install Java 1.8 and some basic dependencies
-  yum: name={{item}} state=present
-  with_items:
-   - unzip
-   - java-1.8.0-openjdk
+  yum: 
+    name: ['unzip', 'java-1.8.0-openjdk']
+    state: present
+
   
 - name: Download WildFly from jboss.org
   get_url: 
@@ -27,7 +27,7 @@
 - name: Extract archive
   unarchive:
     src: "/opt/wildfly-{{ wildfly_version }}.zip"
-    dest: "/usr/share/jboss-as"
+    dest: "/usr/share/jboss-as/"
     owner: jboss
     group: jboss
     remote_src: yes
