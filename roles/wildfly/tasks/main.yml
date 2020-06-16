@@ -38,7 +38,8 @@
     dest: "/usr/share/jboss-as"
     owner: jboss
     group: jboss
-    remote_src: yes
+    dirs: yes
+  delegate_to: "{{ inventory_hostname }}"
 
 - name: Copying standalone.xml configuration file
   template: 
