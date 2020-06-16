@@ -3,7 +3,7 @@ stages:
     - test
 
 
-image: haxorof/ansible:v2.9-centos7
+image: registry.gitlab.com/torese/docker-ansible
 
 variables:
     ANSIBLE_HOST_KEY_CHECKING: 'false'
