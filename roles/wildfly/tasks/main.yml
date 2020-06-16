@@ -1,0 +1,52 @@
+---
+# tasks file for roles/wildfly
+# Based on https://github.com/fmarchioni/mastertheboss/tree/master/ansible/wildfly-standalone
+# with modifications to the tasks, and wildfly version as inventory variable
+
+- name: Install Java 1.8 and some basic dependencies
+  yum: name={{item}} state=present
+  with_items:
+   - unzip
+   - java-1.8.0-openjdk
+  
+- name: Download WildFly from jboss.org
+  get_url: 
+    url: "https://download.jboss.org/wildfly/{{ wildfly_version }}/wildfly-{{ wildfly_version }}.zip "
+    dest: "/opt/wildfly-{{ wildfly_version }}.zip"
+
+- name: Add group "jboss"
+  group: 
+    name: jboss
+
+- name: Add user "jboss"
+  user: 
+    name: jboss 
+    group: jboss 
+    home: /usr/share/jboss-as
+
+- name: Extract archive
+  unarchive:
+    src: "/opt/wildfly-{{ wildfly_version }}.zip"
+    dest: "/usr/share/jboss-as"
+    owner: jboss
+    group: jboss
+    remote_src: yes
+
+  
+- name: Copying standalone.xml configuration file
+  template: 
+    src: standalone.xml.j2
+    dest: /usr/share/jboss-as/standalone/configuration/standalone.xml
+  notify: restart jboss
+  
+- name: Copy the init script
+  copy: 
+    src: wildfly-init-redhat.sh 
+    dest: /etc/init.d/jboss 
+    mode: 0755
+  
+- name: Enable WildFly and ensure service is started
+  service: 
+    name: jboss 
+    enabled: yes 
+    state: started
