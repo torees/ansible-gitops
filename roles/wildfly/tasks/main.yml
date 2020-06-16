@@ -27,12 +27,19 @@
 - name: Extract archive
   unarchive:
     src: "/opt/wildfly-{{ wildfly_version }}.zip"
-    dest: "/usr/share/jboss-as/"
+    dest: "/opt/wildfly-{{ wildfly_version }}"
     owner: jboss
     group: jboss
     remote_src: yes
 
-  
+- name: move version directory
+  copy:
+    src: "/opt/wildfly-{{ wildfly_version }}"
+    dest: "/usr/share/jboss-as"
+    owner: jboss
+    group: jboss
+    remote_src: yes
+
 - name: Copying standalone.xml configuration file
   template: 
     src: standalone.xml.j2
