@@ -36,8 +36,8 @@
   synchronize:
     src: "/opt/wildfly-{{ wildfly_version }}"
     dest: "/usr/share/jboss-as"
-    owner: jboss
-    group: jboss
+    owner: yes
+    group: yes
     dirs: yes
   delegate_to: "{{ inventory_hostname }}"
 
