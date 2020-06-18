@@ -1,0 +1,7 @@
+
+
+nginx_upstreams: 
+  - name: wildfly
+    strategy: "ip_hash" # "least_conn", etc.
+    keepalive: 16 # optional
+    servers:  "localhost:8080"

@@ -6,6 +6,7 @@
    become: yes
    roles:
       - wildfly
+      - { role: geerlingguy.nginx }
    tasks:
       - file:
           path: /tmp/hello
