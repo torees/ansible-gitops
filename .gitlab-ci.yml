@@ -20,7 +20,6 @@ variables:
         - echo $SSH_PRIVATE_KEY | tr ' ' '\n' | tail -n+5 | head -n-4 >> ~/.ssh/id_rsa
         - echo "-----END RSA PRIVATE KEY-----" >> ~/.ssh/id_rsa
 
-        - ansible-galaxy install  geerlingguy.nginx
         - ansible-playbook playbook.yml -u automation --private-key=~/.ssh/id_rsa -i $inventory -e "app_servers=$hosts"
 
 deploy_dev:
