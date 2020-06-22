@@ -7,7 +7,8 @@
    roles:
       - wildfly
    tasks:
-      - file:
-          path: /tmp/hello
-          state: touch
-      - command: " cat /etc/hosts"
+      - name: Deploy built application
+        copy:
+          dest: /usr/share/jboss-as/standalone/deployments/sample-app.war
+          src: SampleWebApp.war
+      
